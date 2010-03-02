@@ -2,14 +2,13 @@ path = "public/javascripts/nested_form.js"
 puts "Generating #{path}"
 File.open("#{Rails.root}/#{path}", "w") do |file|
   file.print <<-EOS
-Event.observe(document, 'dom:loaded', function() {
-    $$('form a.add_nested_fields').each(function(a){
-        a.observe('click', addNestedField);  
-    });
-
-    $$('form a.remove_nested_fields').each(function(a){
-        a.observe('click', removeField);  
-    });
+document.observe('click', function(e,el) {
+  if (el = e.findElement('form a.add_nested_fields')) {
+    el.observe('click', addNestedField);
+  }
+  if (el = e.findElement('form a.remove_nested_fields')) {
+    el.observe('click', removeField);
+  } 
 });
 
 function addNestedField(ev) {

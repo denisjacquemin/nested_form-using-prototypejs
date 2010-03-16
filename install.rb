@@ -49,7 +49,7 @@ function addNestedField(ev) {
    var new_id  = new Date().getTime();
    content     = content.replace(regexp, new_id);
 
-   element.up('.fields').insert(content);
+   element.up('.fields').select('*').last().insert({before:content});
    return false;
 }
 

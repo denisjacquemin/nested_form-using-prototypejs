@@ -56,7 +56,8 @@ function addNestedField(ev) {
 
 function removeField(ev) {
     var element = ev.element();
-    var hidden_field = element.next('input[type=hidden]');
+    
+    var hidden_field = element.previous('input[type=hidden]');
     if(hidden_field) {
         hidden_field.value = '1';
     }
